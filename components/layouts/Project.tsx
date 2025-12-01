@@ -1,6 +1,6 @@
 'use client';
 
-import { projectData } from '@/data/Project'
+import { projectData } from '@/data/Project.data';
 import { useState } from 'react'
 
 const Project = () => {

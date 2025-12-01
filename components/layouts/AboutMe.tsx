@@ -22,12 +22,11 @@ const AboutMe = () => {
             >
               <h3 className="text-2xl font-semibold text-blue-300">Professional Summary</h3>
               <p className="text-gray-300 leading-relaxed">
-                I am a passionate Web and App Developer with expertise in creating modern, responsive, and user-friendly applications.
-                With a strong foundation in both frontend and backend technologies, I bring ideas to life through clean code and innovative solutions.
+                Self-motivated problem solver with one year of experience in software development and architecture. Adept at self-learning, with a strong foundation in communication, collaboration, and
+                creating detailed technical documentation.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                My journey in software development has equipped me with the skills to tackle complex challenges and deliver
-                high-quality products that exceed expectations.
+                My journey in software development has equipped me with the skills to tackle complex challenges and deliver high-quality products that exceed expectations.
               </p>
             </div>
             <div

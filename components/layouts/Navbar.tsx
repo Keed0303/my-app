@@ -1,5 +1,6 @@
 'use client';
 
+import { navigationItems } from '@/data/NavItem.data';
 import { useState } from 'react'
 
 const Navbar = () => {
@@ -14,12 +15,7 @@ const Navbar = () => {
     setIsMenuOpen(false); // Close menu after clicking a link
   };
 
-  const navigationItems = [
-    { id: 'home', label: 'Home', number: '01' },
-    { id: 'experience', label: 'Experience', number: '02' },
-    { id: 'project', label: 'Projects', number: '03' },
-    { id: 'contact', label: 'Contact', number: '04' }
-  ];
+
 
   return (
     <>
@@ -70,25 +66,25 @@ const Navbar = () => {
               <div className="space-y-6">
                 <div>
                   <p className="text-white font-semibold mb-2 text-lg">Location | PH</p>
-                  <p className="text-gray-400 text-sm leading-relaxed">290 Aguirre Ave, Parañaque, 1720 Metro Manila</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">Barangay Banadero, Bamboo Grove Phase 6b Block 4 Lot 39</p>
                 </div>
                 <div>
                   <p className="text-white font-semibold mb-2 text-lg">Phone Number</p>
-                  <p className="text-gray-400 text-sm">79146542</p>
+                  <p className="text-gray-400 text-sm">+63947800275</p>
                 </div>
                 <div>
                   <p className="text-white font-semibold mb-2 text-lg">Email</p>
-                  <p className="text-gray-400 text-sm">info@guerilla360.com</p>
+                  <p className="text-gray-400 text-sm">kydnagpala.dev@gmail.com</p>
                 </div>
               </div>
 
               <div className="pt-8">
                 <p className="text-white font-semibold mb-4 text-lg">Visit Us At:</p>
-                <button className="w-12 h-12 rounded-lg bg-gray-800/50 hover:bg-blue-500 transition-colors duration-300 flex items-center justify-center">
+                <a href='https://www.linkedin.com/in/monagpala/' className="w-12 h-12 rounded-lg bg-gray-800/50 hover:bg-blue-500 transition-colors duration-300 flex items-center justify-center">
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
-                </button>
+                </a>
               </div>
             </div>
           </div>
