@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0e27;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,244 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Starfield Animation */
+.stars, .stars2, .stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stars {
+  background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><circle cx="1" cy="1" r="1" fill="%23ffffff"/></svg>') repeat;
+  background-size: 200px 200px;
+  animation: starsFloat 50s linear infinite;
+  opacity: 0.3;
+}
+
+.stars2 {
+  background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3"><circle cx="1.5" cy="1.5" r="1" fill="%23aaccff"/></svg>') repeat;
+  background-size: 300px 300px;
+  animation: starsFloat 100s linear infinite;
+  opacity: 0.4;
+}
+
+.stars3 {
+  background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><circle cx="2" cy="2" r="1.5" fill="%23ffffff"/></svg>') repeat;
+  background-size: 400px 400px;
+  animation: starsFloat 150s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes starsFloat {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-1000px);
+  }
+}
+
+/* Floating Logo Animations */
+.floating-logo {
+  position: absolute;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.logo-1 {
+  top: 10%;
+  right: -10%;
+  animation-name: float-1;
+}
+
+.logo-2 {
+  top: 25%;
+  right: -15%;
+  animation-name: float-2;
+  animation-delay: 0.5s;
+}
+
+.logo-3 {
+  top: 45%;
+  right: -12%;
+  animation-name: float-3;
+  animation-delay: 1s;
+}
+
+.logo-4 {
+  bottom: 30%;
+  right: -10%;
+  animation-name: float-4;
+  animation-delay: 1.5s;
+}
+
+.logo-5 {
+  bottom: 15%;
+  right: -15%;
+  animation-name: float-5;
+  animation-delay: 2s;
+}
+
+.logo-6 {
+  bottom: 5%;
+  right: -8%;
+  animation-name: float-6;
+  animation-delay: 2.5s;
+}
+
+@keyframes float-1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, -15px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-5px, -25px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(15px, -15px) rotate(3deg);
+  }
+}
+
+@keyframes float-2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-15px, 10px) rotate(-5deg);
+  }
+  50% {
+    transform: translate(-25px, -10px) rotate(5deg);
+  }
+  75% {
+    transform: translate(-10px, 15px) rotate(-3deg);
+  }
+}
+
+@keyframes float-3 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(12px, 15px) rotate(4deg);
+  }
+  50% {
+    transform: translate(-8px, 20px) rotate(-4deg);
+  }
+  75% {
+    transform: translate(10px, 10px) rotate(2deg);
+  }
+}
+
+@keyframes float-4 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-10px, -12px) rotate(-6deg);
+  }
+  50% {
+    transform: translate(15px, -20px) rotate(6deg);
+  }
+  75% {
+    transform: translate(-12px, -10px) rotate(-3deg);
+  }
+}
+
+@keyframes float-5 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(18px, 10px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-10px, 15px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(15px, 8px) rotate(3deg);
+  }
+}
+
+@keyframes float-6 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-12px, -18px) rotate(-4deg);
+  }
+  50% {
+    transform: translate(10px, -25px) rotate(4deg);
+  }
+  75% {
+    transform: translate(-15px, -12px) rotate(-2deg);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e27;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #60a5fa, #a78bfa);
+}
+
+/* Glow effect on hover for interactive elements */
+.glow-on-hover {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+/* Performance optimization for parallax animations */
+[class*="parallax"] {
+  will-change: transform, opacity;
+}
+
+/* Smooth transitions for parallax elements */
+.parallax-inner {
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [class*="parallax"] {
+    will-change: auto;
+  }
 }
