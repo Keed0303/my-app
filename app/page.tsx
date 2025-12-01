@@ -5,6 +5,7 @@ import ClientWrapper from "@/components/ui/ClientWrapper";
 
 // Dynamic imports for below-fold content - loads only when needed
 const ParticleBackground = dynamic(() => import('@/components/ui/ParticleBackground'));
+const AnimatedGradients = dynamic(() => import('@/components/ui/AnimatedGradients'));
 const CustomCursor = dynamic(() => import('@/components/ui/CustomCursor'));
 const AboutMe = dynamic(() => import('@/components/layouts//AboutMe'));
 const Project = dynamic(() => import('@/components/layouts/Project'));
@@ -19,6 +20,9 @@ export default function Home() {
       <div className="relative min-h-screen bg-[#0a0e27] text-white overflow-x-hidden cursor-none">
         {/* Custom Cursor */}
         <CustomCursor />
+
+        {/* Animated Gradient Backgrounds */}
+        <AnimatedGradients />
 
         {/* Particle Background */}
         <ParticleBackground />
