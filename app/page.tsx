@@ -8,6 +8,8 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Navbar from "@/components/Navbar";
+import AboutMe from "@/components/AboutMe";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
@@ -38,93 +40,14 @@ export default function Home() {
       {/* Particle Background */}
       <ParticleBackground />
 
+      {/* Hero Section */}
       <Hero />
 
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e27]/80 backdrop-blur-md my-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            <div className="flex-shrink-0">
-              <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                MKT
-              </span>
-            </div>
-            <div className="hidden md:block">
-              <div className="flex space-x-6 lg:space-x-8">
-                {['home', 'about', 'project', 'contact'].map((section) => (
-                  <button
-                    key={section}
-                    onClick={() => scrollToSection(section)}
-                    className={`px-4 py-2 rounded-lg text-base lg:text-lg font-medium transition-all duration-300 ${
-                      activeSection === section
-                        ? 'text-blue-400 bg-blue-500/10'
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button className="text-gray-300 hover:text-white p-2">
-                <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* Navbar Section */}
+      <Navbar />
 
-
-
-      {/* About Section */}
-      <section id="about" className="relative z-10 py-20 bg-[#0a0e27]/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            data-aos="fade-up"
-            data-aos-duration="800"
-            className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
-          >
-            About Me
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div
-              data-aos="fade-right"
-              data-aos-delay="100"
-              data-aos-duration="800"
-              className="space-y-6"
-            >
-              <h3 className="text-2xl font-semibold text-blue-300">Professional Summary</h3>
-              <p className="text-gray-300 leading-relaxed">
-                I am a passionate Web and App Developer with expertise in creating modern, responsive, and user-friendly applications.
-                With a strong foundation in both frontend and backend technologies, I bring ideas to life through clean code and innovative solutions.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                My journey in software development has equipped me with the skills to tackle complex challenges and deliver
-                high-quality products that exceed expectations.
-              </p>
-            </div>
-            <div
-              data-aos="fade-left"
-              data-aos-delay="200"
-              data-aos-duration="800"
-              className="space-y-6"
-            >
-              <h3 className="text-2xl font-semibold text-blue-300">Skills & Expertise</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Python', 'HTML5', 'CSS3', 'Tailwind CSS', 'Git'].map((skill) => (
-                  <div key={skill} className="bg-blue-500/10 border border-blue-500/30 rounded-lg px-4 py-2 text-center hover:bg-blue-500/20 transition-colors duration-300">
-                    <span className="text-gray-200">{skill}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Experience Section */}
+      <AboutMe />
 
       {/* Projects Section */}
       <section id="project" className="relative z-10 py-20">
@@ -371,7 +294,7 @@ export default function Home() {
       <footer className="relative z-10 py-8 border-t border-blue-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-400">
-            © 2024 Manuel Kyd Thomas O. Nagpala. All rights reserved.
+            © 2025 Manuel Kyd Thomas O. Nagpala. All rights reserved.
           </p>
         </div>
       </footer>
