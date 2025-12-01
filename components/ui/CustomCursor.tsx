@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const CustomCursor = () => {
   const cursorDotRef = useRef<HTMLDivElement>(null);
@@ -8,6 +8,10 @@ const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Disable custom cursor on mobile/touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
     const cursorDot = cursorDotRef.current;
     const cursorBorder = cursorBorderRef.current;
     if (!cursorDot || !cursorBorder) return;
@@ -16,6 +20,7 @@ const CustomCursor = () => {
     let mouseY = 0;
     let borderX = 0;
     let borderY = 0;
+    let animationFrameId: number;
 
     // Update mouse position instantly for the dot
     const handleMouseMove = (e: MouseEvent) => {
@@ -34,7 +39,7 @@ const CustomCursor = () => {
       borderY += (mouseY - borderY) * speed;
 
       cursorBorder.style.transform = `translate(${borderX}px, ${borderY}px)`;
-      requestAnimationFrame(animateBorder);
+      animationFrameId = requestAnimationFrame(animateBorder);
     };
 
     // Handle mouse enter/leave to show/hide cursor
@@ -66,6 +71,7 @@ const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 

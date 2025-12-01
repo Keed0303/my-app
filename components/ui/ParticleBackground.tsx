@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Particle {
   x: number;
@@ -22,13 +22,23 @@ const ParticleBackground = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Check if device is mobile for reduced particles
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
     // Set canvas size
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
     setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
+
+    // Throttle resize events
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(setCanvasSize, 250);
+    };
+    window.addEventListener('resize', handleResize);
 
     // Particle colors (blues, purples, and whites)
     const colors = [
@@ -39,9 +49,9 @@ const ParticleBackground = () => {
       'rgba(255, 255, 255, ', // white
     ];
 
-    // Create particles
+    // Create particles - reduced count for better performance
     const particles: Particle[] = [];
-    const particleCount = 80;
+    const particleCount = isMobile ? 30 : 50;
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -56,8 +66,9 @@ const ParticleBackground = () => {
     }
 
     let animationFrameId: number;
+    let frameCount = 0;
 
-    // Animation loop
+    // Animation loop with performance optimizations
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -72,43 +83,34 @@ const ParticleBackground = () => {
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Pulsing opacity effect
-        particle.opacity += (Math.random() - 0.5) * 0.02;
-        particle.opacity = Math.max(0.1, Math.min(0.7, particle.opacity));
+        // Pulsing opacity effect - only update every 3 frames for better performance
+        if (frameCount % 3 === 0) {
+          particle.opacity += (Math.random() - 0.5) * 0.02;
+          particle.opacity = Math.max(0.1, Math.min(0.7, particle.opacity));
+        }
 
-        // Draw particle with glow effect
-        const gradient = ctx.createRadialGradient(
-          particle.x,
-          particle.y,
-          0,
-          particle.x,
-          particle.y,
-          particle.size * 4
-        );
-        gradient.addColorStop(0, `${particle.color}${particle.opacity})`);
-        gradient.addColorStop(0.5, `${particle.color}${particle.opacity * 0.3})`);
-        gradient.addColorStop(1, `${particle.color}0)`);
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size * 4, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Draw core
+        // Simplified rendering - draw only the core with shadow blur for glow effect
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = `${particle.color}${particle.opacity})`;
         ctx.fillStyle = `${particle.color}${particle.opacity})`;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
+
+        // Reset shadow
+        ctx.shadowBlur = 0;
       });
 
+      frameCount++;
       animationFrameId = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
-      window.removeEventListener('resize', setCanvasSize);
+      window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
+      clearTimeout(resizeTimeout);
     };
   }, []);
 

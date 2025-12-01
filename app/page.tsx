@@ -1,62 +1,52 @@
-'use client';
-
+import dynamic from 'next/dynamic';
 import Hero from "@/components/layouts//hero";
-import ParticleBackground from "@/components/ui/ParticleBackground";
-import CustomCursor from "@/components/ui/CustomCursor";
-import ScrollButton from "@/components/ui/ScrollButton";
-import { useState, useEffect } from "react";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import Navbar from "@/components/layouts//Navbar";
-import AboutMe from "@/components/layouts//AboutMe";
-import Project from "@/components/layouts/Project";
-import Contact from "@/components/layouts/Contact";
-import Experience from "@/components/layouts/Experience";
-import Footer from "@/components/layouts/Footer";
+import ClientWrapper from "@/components/ui/ClientWrapper";
+
+// Dynamic imports for below-fold content - loads only when needed
+const ParticleBackground = dynamic(() => import('@/components/ui/ParticleBackground'));
+const CustomCursor = dynamic(() => import('@/components/ui/CustomCursor'));
+const AboutMe = dynamic(() => import('@/components/layouts//AboutMe'));
+const Project = dynamic(() => import('@/components/layouts/Project'));
+const Experience = dynamic(() => import('@/components/layouts/Experience'));
+const Contact = dynamic(() => import('@/components/layouts/Contact'));
+const Footer = dynamic(() => import('@/components/layouts/Footer'));
+const ScrollButton = dynamic(() => import('@/components/ui/ScrollButton'));
 
 export default function Home() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: false,
-      mirror: false,
-      offset: 120,
-      delay: 0,
-    });
-  }, []);
-
   return (
-    <div className="relative min-h-screen bg-[#0a0e27] text-white overflow-x-hidden cursor-none">
-      {/* Custom Cursor */}
-      <CustomCursor />
+    <ClientWrapper>
+      <div className="relative min-h-screen bg-[#0a0e27] text-white overflow-x-hidden cursor-none">
+        {/* Custom Cursor */}
+        <CustomCursor />
 
-      {/* Particle Background */}
-      <ParticleBackground />
+        {/* Particle Background */}
+        <ParticleBackground />
 
-      {/* Hero Section */}
-      <Hero />
+        {/* Hero Section */}
+        <Hero />
 
-      {/* Navbar Section */}
-      <Navbar />
+        {/* Navbar Section */}
+        <Navbar />
 
-      {/* Experience Section */}
-      <AboutMe />
+        {/* Experience Section */}
+        <AboutMe />
 
-      {/* Project Section */}
-      <Project />
+        {/* Project Section */}
+        <Project />
 
-      {/* Experience */}
-      <Experience />
-      {/* Contact Section */}
+        {/* Experience */}
+        <Experience />
+        {/* Contact Section */}
 
-      <Contact />
+        <Contact />
 
-      {/* Footer Section */}
-      <Footer />
+        {/* Footer Section */}
+        <Footer />
 
-      {/* Scroll Button */}
-      <ScrollButton />
-    </div>
+        {/* Scroll Button */}
+        <ScrollButton />
+      </div>
+    </ClientWrapper>
   );
 }

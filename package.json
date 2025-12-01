@@ -2,11 +2,18 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "*.sass",
+    "*.less"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "aos": "^2.3.4",

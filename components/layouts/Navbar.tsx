@@ -20,46 +20,62 @@ const Navbar = () => {
   return (
     <>
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e27]/80 backdrop-blur-md my-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="fixed top-0 left-0 right-0 z-50 my-4 transition-opacity duration-300">
+        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#0a0e27]/80 backdrop-blur-md rounded-lg transition-opacity duration-300 ${
+          isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}>
           <div className="flex items-center justify-between h-16 sm:h-20">
             <div className="flex-shrink-0">
               <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 MKT
               </span>
             </div>
-
-            {/* Burger Menu Button (Always Visible) */}
-            <div>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="relative z-50 flex flex-col items-end gap-1.5 p-2 group"
-                aria-label="Toggle menu"
-              >
-                <span className={`block h-0.5 w-8 bg-gradient-to-r from-orange-400 to-orange-500 transform transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 translate-y-2 bg-white' : ''
-                }`}></span>
-                <span className={`block h-0.5 w-6 bg-gradient-to-r from-orange-400 to-orange-500 transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100'
-                }`}></span>
-                <span className={`block h-0.5 w-8 bg-gradient-to-r from-orange-400 to-orange-500 transform transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-2 bg-white' : ''
-                }`}></span>
-              </button>
-            </div>
+            {/* Placeholder for button spacing */}
+            <div className="w-12 h-12"></div>
           </div>
         </div>
       </nav>
 
-      {/* Full Screen Menu */}
+      {/* Burger Menu Button - Always visible, positioned separately */}
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="fixed top-[2rem] right-4 sm:right-6 lg:right-8 z-[60] flex flex-col items-end gap-1.5 p-2 group"
+        aria-label="Toggle menu"
+        style={{ marginRight: 'calc((100% - min(1280px, 100%)) / 2)' }}
+      >
+        <span className={`block h-0.5 w-8 bg-gradient-to-r from-orange-400 to-orange-500 transform transition-all duration-300 ${
+          isMenuOpen ? 'rotate-45 translate-y-2 bg-white' : ''
+        }`}></span>
+        <span className={`block h-0.5 w-6 bg-gradient-to-r from-orange-400 to-orange-500 transition-all duration-300 ${
+          isMenuOpen ? 'opacity-0' : 'opacity-100'
+        }`}></span>
+        <span className={`block h-0.5 w-8 bg-gradient-to-r from-orange-400 to-orange-500 transform transition-all duration-300 ${
+          isMenuOpen ? '-rotate-45 -translate-y-2 bg-white' : ''
+        }`}></span>
+      </button>
+
+      {/* Full Screen Menu with Ripple Effect */}
       <div
-        className={`fixed inset-0 bg-gradient-to-br from-[#0a0e27] via-[#0f1942] to-[#1a1f4d] z-50 transform transition-transform duration-500 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 bg-gradient-to-br from-[#0a0e27] via-[#0f1942] to-[#1a1f4d] z-40 ${
+          isMenuOpen
+            ? 'opacity-100 scale-100'
+            : 'opacity-0 scale-0 pointer-events-none'
         }`}
+        style={{
+          transformOrigin: 'top right',
+          clipPath: isMenuOpen
+            ? 'circle(150% at calc(100% - 60px) 60px)'
+            : 'circle(0% at calc(100% - 60px) 60px)',
+          transition: isMenuOpen
+            ? 'clip-path 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out'
+            : 'opacity 0.2s ease-out, clip-path 0s 0.2s'
+        }}
       >
         <div className="flex flex-col md:flex-row h-full">
           {/* Left Side - Contact Info */}
-          <div className="w-full md:w-1/3 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-800/50">
+          <div className={`w-full md:w-1/3 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-800/50 transition-all duration-500 delay-200 ${
+            isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <div className="space-y-8">
               <h3 className="text-gray-400 text-sm font-semibold tracking-wider">Contact Info</h3>
 
@@ -90,13 +106,20 @@ const Navbar = () => {
           </div>
 
           {/* Right Side - Navigation Items */}
-          <div className="flex-1 flex items-center justify-center p-8 md:p-12 lg:p-16">
+          <div className={`flex-1 flex items-center justify-center p-8 md:p-12 lg:p-16 transition-all duration-500 delay-300 ${
+            isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <nav className="w-full max-w-2xl">
-              {navigationItems.map((section) => (
+              {navigationItems.map((section, index) => (
                 <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
-                  className="group flex items-center gap-6 w-full py-6 text-left transition-all duration-300 border-b border-gray-800/50 hover:border-blue-400/50"
+                  className={`group flex items-center gap-6 w-full py-6 text-left transition-all duration-300 border-b border-gray-800/50 hover:border-blue-400/50 ${
+                    isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                  }`}
+                  style={{
+                    transitionDelay: isMenuOpen ? `${400 + index * 100}ms` : '0ms'
+                  }}
                 >
                   <span className="text-3xl md:text-4xl font-bold text-gray-700 group-hover:text-blue-400 transition-colors duration-300">
                     {section.number}
@@ -109,16 +132,6 @@ const Navbar = () => {
             </nav>
           </div>
 
-          {/* Close Button */}
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            className="absolute top-8 right-8 text-gray-400 hover:text-white transition-colors duration-300"
-            aria-label="Close menu"
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
         </div>
       </div>
     </>

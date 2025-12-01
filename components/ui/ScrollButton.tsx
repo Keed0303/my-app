@@ -1,22 +1,30 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ScrollButton = () => {
   const [isAtBottom, setIsAtBottom] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop = window.scrollY;
+    let ticking = false;
 
-      // Check if user is near the bottom (within 100px)
-      const isBottom = scrollTop + windowHeight >= documentHeight - 100;
-      setIsAtBottom(isBottom);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const windowHeight = window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+          const scrollTop = window.scrollY;
+
+          // Check if user is near the bottom (within 100px)
+          const isBottom = scrollTop + windowHeight >= documentHeight - 100;
+          setIsAtBottom(isBottom);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check initial position
 
     return () => window.removeEventListener('scroll', handleScroll);
