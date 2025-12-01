@@ -14,7 +14,7 @@ const Hero = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'project', 'contact'];
+      const sections = ['home', 'experience', 'project', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
