@@ -1,51 +1,88 @@
+'use client';
+
 import { projectData } from '@/data/Project'
-import React from 'react'
+import { useState } from 'react'
 
 const Project = () => {
+  const [activeCategory, setActiveCategory] = useState<'Mobile App' | 'Website' | 'Desktop' | 'Other Projects'>('Mobile App');
+  const categories = ['Mobile App', 'Website', 'Desktop', 'Other Projects'] as const;
+
+  const filteredProjects = projectData.filter(project => project.category === activeCategory);
+
   return (
     <>
      {/* Projects Section */}
       <section id="project" className="relative z-10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
+          {/* Portfolio Title */}
+          <h1
             data-aos="fade-up"
             data-aos-duration="800"
-            className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            className="text-5xl md:text-6xl font-bold text-center mb-12 tracking-wider"
           >
-            Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectData.map((project, index) => (
-              <div
-                key={index}
-                data-aos="zoom-in-up"
-                data-aos-delay={index * 100}
-                data-aos-duration="800"
-                className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 group h-full"
+            PORTFOLIO
+          </h1>
+
+          {/* Category Navigation */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16"
+          >
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`text-base md:text-lg font-medium transition-all duration-300 pb-2 ${
+                  activeCategory === category
+                    ? 'text-cyan-400 border-b-2 border-cyan-400'
+                    : 'text-gray-400 hover:text-white'
+                }`}
               >
-                <div className="h-40 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-                  <span className="text-4xl">📱</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-blue-300 group-hover:text-blue-200">{project.title}</h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <button className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                    View Demo →
-                  </button>
-                  <button className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
-                    GitHub →
-                  </button>
-                </div>
-              </div>
+                {category}
+              </button>
             ))}
           </div>
+
+          {/* Projects Grid */}
+          {filteredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={index}
+                  data-aos="zoom-in-up"
+                  data-aos-delay={index * 100}
+                  data-aos-duration="800"
+                  className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 group h-full"
+                >
+                  <div className="h-40 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
+                    <span className="text-4xl">📱</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-blue-300 group-hover:text-blue-200">{project.title}</h3>
+                  <p className="text-gray-400 mb-4 line-clamp-3">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    <button className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                      View Demo →
+                    </button>
+                    <button className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
+                      GitHub →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-gray-400 py-20">
+              No projects in this category yet.
+            </div>
+          )}
         </div>
       </section>
     </>
