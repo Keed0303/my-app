@@ -25,6 +25,9 @@ const Hero = () => {
     setSubmitStatus('idle');
 
     try {
+      // Initialize EmailJS with your public key
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
+
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
@@ -32,8 +35,7 @@ const Hero = () => {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        }
       );
 
       setSubmitStatus('success');
