@@ -39,7 +39,7 @@ const AboutMe = () => {
                 {/* Stats cards below image */}
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   <div className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-blue-300">1+</div>
+                    <div className="text-2xl font-bold text-blue-300">3+</div>
                     <div className="text-xs text-gray-400 mt-1">Years Experience</div>
                   </div>
                   <div className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-lg p-4 text-center">
