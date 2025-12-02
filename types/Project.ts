@@ -4,4 +4,5 @@ export type Project = {
   tech: string[];
   category: 'Mobile App' | 'Website' | 'Desktop' | 'Other Projects';
   image?: string;
+  accessibility: boolean
 };

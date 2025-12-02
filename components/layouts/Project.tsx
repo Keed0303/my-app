@@ -1,13 +1,19 @@
 'use client';
 
 import { projectData } from '@/data/Project.data';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import AOS from 'aos';
 
 const Project = () => {
   const [activeCategory, setActiveCategory] = useState<'Mobile App' | 'Website' | 'Desktop' | 'Other Projects'>('Mobile App');
   const categories = ['Mobile App', 'Website', 'Desktop', 'Other Projects'] as const;
 
   const filteredProjects = projectData.filter(project => project.category === activeCategory);
+
+  // Refresh AOS when category changes
+  useEffect(() => {
+    AOS.refresh();
+  }, [activeCategory]);
 
   return (
     <>
@@ -46,17 +52,32 @@ const Project = () => {
 
           {/* Projects Grid */}
           {filteredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div key={activeCategory} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
                 <div
-                  key={index}
-                  data-aos="zoom-in-up"
-                  data-aos-delay={index * 100}
-                  data-aos-duration="800"
+                  key={`${activeCategory}-${index}`}
                   className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 group h-full"
                 >
-                  <div className="h-40 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-4xl">📱</span>
+                  <div className="h-40 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    {project.image ? (
+                      <svg className="w-full h-full" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                          <pattern id={`project-image-${index}`} x="0" y="0" width="1" height="1" patternContentUnits="objectBoundingBox">
+                            <image
+                              href={project.image}
+                              x="0"
+                              y="0"
+                              width="1"
+                              height="1"
+                              preserveAspectRatio="xMidYMid slice"
+                            />
+                          </pattern>
+                        </defs>
+                        <rect x="0" y="0" width="100%" height="100%" fill={`url(#project-image-${index})`} />
+                      </svg>
+                    ) : (
+                      <span className="text-4xl">📱</span>
+                    )}
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-blue-300 group-hover:text-blue-200">{project.title}</h3>
                   <p className="text-gray-400 mb-4 line-clamp-3">{project.description}</p>
@@ -67,14 +88,18 @@ const Project = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-3">
-                    <button className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                      View Demo →
-                    </button>
-                    <button className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
-                      GitHub →
-                    </button>
-                  </div>
+
+                  {project.accessibility === true && (
+                    <div className="flex gap-3">
+                      <button className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                        View Demo →
+                      </button>
+
+                      <a href=''  className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
+                        GitHub →
+                      </a>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

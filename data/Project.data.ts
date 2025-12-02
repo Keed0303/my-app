@@ -2,39 +2,46 @@ import { Project } from "@/types/Project";
 
 export const projectData: Project[] = [
   {
-    title: 'Dating Mobile App Design',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-    tech: ['React Native', 'Firebase', 'UI/UX'],
+    title: 'My Pet\'s Journey Application',
+    description: 'A comprehensive mobile loyalty application designed for pet care services, developed for Blink Creative Studio. Features reward tracking, appointment scheduling, and personalized pet profiles. Built with real-time database synchronization and push notifications to keep pet owners engaged and connected with their favorite veterinary clinics and pet services.',
+    tech: ['React Native', 'Firebase', 'Expo'],
     category: 'Mobile App',
+    image: '/My pets journey/Home.svg',
+    accessibility: true
   },
-  {
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    category: 'Website',
-  },
-  {
-    title: 'Task Management App',
-    description: 'Collaborative task management tool with real-time updates and team features.',
-    tech: ['Next.js', 'TypeScript', 'Firebase'],
-    category: 'Website',
-  },
-  {
-    title: 'Portfolio Website',
-    description: 'Modern portfolio website with animations and responsive design.',
-    tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-    category: 'Website',
-  },
-  {
-    title: 'Desktop Media Player',
-    description: 'A powerful desktop application for playing and organizing media files with advanced features.',
-    tech: ['Electron', 'React', 'Node.js'],
-    category: 'Desktop',
-  },
-  {
-    title: 'Social Media Dashboard',
-    description: 'Analytics dashboard for tracking social media metrics and engagement.',
-    tech: ['React', 'Chart.js', 'API Integration'],
-    category: 'Other Projects',
-  },
+  // {
+  //   title: 'E-Commerce Platform',
+  //   description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
+  //   tech: ['React', 'Node.js', 'MongoDB'],
+  //   category: 'Website',
+  //   accessibility: true
+  // },
+  // {
+  //   title: 'Task Management App',
+  //   description: 'Collaborative task management tool with real-time updates and team features.',
+  //   tech: ['Next.js', 'TypeScript', 'Firebase'],
+  //   category: 'Website',
+  //   accessibility: true
+  // },
+  // {
+  //   title: 'Portfolio Website',
+  //   description: 'Modern portfolio website with animations and responsive design.',
+  //   tech: ['React', 'Tailwind CSS', 'Framer Motion'],
+  //   category: 'Website',
+  //   accessibility: true
+  // },
+  // {
+  //   title: 'Desktop Media Player',
+  //   description: 'A powerful desktop application for playing and organizing media files with advanced features.',
+  //   tech: ['Electron', 'React', 'Node.js'],
+  //   category: 'Desktop',
+  //   accessibility: true
+  // },
+  // {
+  //   title: 'Social Media Dashboard',
+  //   description: 'Analytics dashboard for tracking social media metrics and engagement.',
+  //   tech: ['React', 'Chart.js', 'API Integration'],
+  //   category: 'Other Projects',
+  //   accessibility: true
+  // },
 ];
