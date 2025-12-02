@@ -12,6 +12,19 @@ const Hero = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // Initialize EmailJS once when component mounts
+  useEffect(() => {
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!publicKey) {
+      console.error('EmailJS public key is missing!');
+      return;
+    }
+
+    emailjs.init(publicKey);
+    console.log('EmailJS initialized successfully');
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -24,13 +37,24 @@ const Hero = () => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    try {
-      // Initialize EmailJS with your public key
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 
+    // Log environment variables (for debugging)
+    console.log('Service ID:', serviceId ? 'Set' : 'Missing');
+    console.log('Template ID:', templateId ? 'Set' : 'Missing');
+
+    if (!serviceId || !templateId) {
+      console.error('EmailJS credentials are missing!');
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -38,6 +62,7 @@ const Hero = () => {
         }
       );
 
+      console.log('Email sent successfully!');
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => {
