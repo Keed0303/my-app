@@ -1,42 +1,104 @@
-import React from 'react'
+import Image from 'next/image'
 
 const AboutMe = () => {
   return (
     <>
-     {/* Experience Section */}
-     <section id="experience" className="relative z-10 py-20 bg-[#0a0e27]/50 backdrop-blur-sm">
+     {/* About Me Section */}
+     <section id="about" className="relative z-10 py-20 bg-[#0a0e27]/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             data-aos="fade-up"
             data-aos-duration="800"
-            className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
           >
             About Me
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            {/* Profile Image Card */}
             <div
               data-aos="fade-right"
-              data-aos-delay="100"
               data-aos-duration="800"
-              className="space-y-6"
+              className="lg:col-span-1"
             >
-              <h3 className="text-2xl font-semibold text-blue-300">Professional Summary</h3>
-              <p className="text-gray-300 leading-relaxed">
-                Self-motivated problem solver with one year of experience in software development and architecture. Adept at self-learning, with a strong foundation in communication, collaboration, and
-                creating detailed technical documentation.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                My journey in software development has equipped me with the skills to tackle complex challenges and deliver high-quality products that exceed expectations.
-              </p>
+              <div className="relative">
+                {/* Image container */}
+                <div className="relative bg-[#0a0e27]/30 rounded-xl p-1 border border-blue-500/20">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
+                    <Image
+                      src="/gradpic.jpg"
+                      alt="Graduation Photo"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                {/* Stats cards below image */}
+                <div className="grid grid-cols-2 gap-3 mt-4">
+                  <div className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-blue-300">1+</div>
+                    <div className="text-xs text-gray-400 mt-1">Years Experience</div>
+                  </div>
+                  <div className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-blue-300">10+</div>
+                    <div className="text-xs text-gray-400 mt-1">Technologies</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div
-              data-aos="fade-left"
-              data-aos-delay="200"
-              data-aos-duration="800"
-              className="space-y-6"
-            >
-              <h3 className="text-2xl font-semibold text-blue-300">Skills & Expertise</h3>
-              <div className="grid grid-cols-5 gap-4">
+
+            {/* Content Area */}
+            <div className="lg:col-span-2 space-y-6">
+              {/* Professional Summary Card */}
+              <div
+                data-aos="fade-left"
+                data-aos-delay="100"
+                data-aos-duration="800"
+                className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-xl p-6"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center border border-blue-500/30">
+                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-300">
+                    Professional Summary
+                  </h3>
+                </div>
+
+                <div className="space-y-4">
+                  <p className="text-gray-300 leading-relaxed">
+                    Self-motivated problem solver with one year of experience in software development and architecture. Adept at self-learning, with a strong foundation in communication, collaboration, and creating detailed technical documentation.
+                  </p>
+                  <p className="text-gray-300 leading-relaxed">
+                    My journey in software development has equipped me with the skills to tackle complex challenges and deliver high-quality products that exceed expectations.
+                  </p>
+                </div>
+              </div>
+
+              {/* Skills Card */}
+              <div
+                data-aos="fade-left"
+                data-aos-delay="200"
+                data-aos-duration="800"
+                className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-xl p-6"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center border border-blue-500/30">
+                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-300">
+                    Skills & Expertise
+                  </h3>
+                </div>
+
+                  <div className="grid grid-cols-5 gap-4">
                 {/* JavaScript */}
                 <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg w-16 h-16 flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-yellow-500/50 cursor-pointer group relative p-3">
                   <svg viewBox="0 0 24 24" fill="#000000" className="w-full h-full">
@@ -137,6 +199,7 @@ const AboutMe = () => {
                     Git
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>

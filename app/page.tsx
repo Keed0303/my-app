@@ -1,4 +1,7 @@
+'use client';
+
 import dynamic from 'next/dynamic';
+import { useState } from 'react';
 import Hero from "@/components/layouts//hero";
 import Navbar from "@/components/layouts//Navbar";
 import ClientWrapper from "@/components/ui/ClientWrapper";
@@ -15,6 +18,8 @@ const Footer = dynamic(() => import('@/components/layouts/Footer'));
 const ScrollButton = dynamic(() => import('@/components/ui/ScrollButton'));
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <ClientWrapper>
       <div className="relative min-h-screen bg-[#0a0e27] text-white overflow-x-hidden cursor-none">
@@ -31,7 +36,7 @@ export default function Home() {
         <Hero />
 
         {/* Navbar Section */}
-        <Navbar />
+        <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
         {/* Experience Section */}
         <AboutMe />
@@ -49,7 +54,7 @@ export default function Home() {
         <Footer />
 
         {/* Scroll Button */}
-        <ScrollButton />
+        <ScrollButton isMenuOpen={isMenuOpen} />
       </div>
     </ClientWrapper>
   );

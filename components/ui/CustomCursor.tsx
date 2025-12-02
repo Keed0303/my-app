@@ -6,74 +6,120 @@ const CustomCursor = () => {
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const cursorBorderRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
-    // Disable custom cursor on mobile/touch devices
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+    // Check if device is mobile/tablet
+    const checkIfMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isMobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isSmallScreen = window.innerWidth < 768;
 
-    const cursorDot = cursorDotRef.current;
-    const cursorBorder = cursorBorderRef.current;
-    if (!cursorDot || !cursorBorder) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let borderX = 0;
-    let borderY = 0;
-    let animationFrameId: number;
-
-    // Update mouse position instantly for the dot
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      // Move the small dot instantly
-      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      return isTouchDevice || isMobileUserAgent || isSmallScreen;
     };
 
-    // Smooth follow animation for the border circle
-    const animateBorder = () => {
-      // Lerp (linear interpolation) for smooth following
-      const speed = 0.15; // Lower = more delay, smoother follow
-      borderX += (mouseX - borderX) * speed;
-      borderY += (mouseY - borderY) * speed;
+    // Initial check
+    const isMobile = checkIfMobile();
+    setShouldRender(!isMobile);
 
-      cursorBorder.style.transform = `translate(${borderX}px, ${borderY}px)`;
-      animationFrameId = requestAnimationFrame(animateBorder);
+    if (isMobile) {
+      return;
+    }
+
+    // Mark as mounted first
+    setIsMounted(true);
+
+    // Handle window resize to toggle cursor on viewport changes
+    const handleResize = () => {
+      const isNowMobile = window.innerWidth < 768;
+      setShouldRender(!isNowMobile);
+      if (!isNowMobile && !isMounted) {
+        setIsMounted(true);
+      }
     };
 
-    // Handle mouse enter/leave to show/hide cursor
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
+    window.addEventListener('resize', handleResize);
 
-    // Handle hover states
-    const handleMouseDown = () => {
-      cursorBorder.style.transform = `translate(${borderX}px, ${borderY}px) scale(0.8)`;
-    };
+    // Small delay to ensure refs are set
+    const timer = setTimeout(() => {
+      const cursorDot = cursorDotRef.current;
+      const cursorBorder = cursorBorderRef.current;
+      if (!cursorDot || !cursorBorder) return;
 
-    const handleMouseUp = () => {
-      cursorBorder.style.transform = `translate(${borderX}px, ${borderY}px) scale(1)`;
-    };
+      let mouseX = 0;
+      let mouseY = 0;
+      let borderX = 0;
+      let borderY = 0;
+      let animationFrameId: number;
 
-    // Add event listeners
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseenter', handleMouseEnter);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
+      // Update mouse position instantly for the dot
+      const handleMouseMove = (e: MouseEvent) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-    // Start border animation
-    animateBorder();
+        // Move the small dot instantly
+        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      };
+
+      // Smooth follow animation for the border circle
+      const animateBorder = () => {
+        // Lerp (linear interpolation) for smooth following
+        const speed = 0.15; // Lower = more delay, smoother follow
+        borderX += (mouseX - borderX) * speed;
+        borderY += (mouseY - borderY) * speed;
+
+        cursorBorder.style.transform = `translate(${borderX}px, ${borderY}px)`;
+        animationFrameId = requestAnimationFrame(animateBorder);
+      };
+
+      // Handle mouse enter/leave to show/hide cursor
+      const handleMouseEnter = () => setIsVisible(true);
+      const handleMouseLeave = () => setIsVisible(false);
+
+      // Handle hover states
+      const handleMouseDown = () => {
+        cursorBorder.style.transform = `translate(${borderX}px, ${borderY}px) scale(0.8)`;
+      };
+
+      const handleMouseUp = () => {
+        cursorBorder.style.transform = `translate(${borderX}px, ${borderY}px) scale(1)`;
+      };
+
+      // Add event listeners
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseenter', handleMouseEnter);
+      document.addEventListener('mouseleave', handleMouseLeave);
+      document.addEventListener('mousedown', handleMouseDown);
+      document.addEventListener('mouseup', handleMouseUp);
+
+      // Start border animation
+      animateBorder();
+
+      // Cleanup function for the timer
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseenter', handleMouseEnter);
+        document.removeEventListener('mouseleave', handleMouseLeave);
+        document.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('mouseup', handleMouseUp);
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+      };
+    }, 50);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
-      cancelAnimationFrame(animationFrameId);
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  // Don't render on mobile/touch devices
+  if (!shouldRender) return null;
+
+  // Don't render until mounted to prevent flash on load
+  if (!isMounted) return null;
 
   return (
     <>

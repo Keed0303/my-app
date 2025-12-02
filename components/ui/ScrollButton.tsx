@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from 'react';
 
-const ScrollButton = () => {
+interface ScrollButtonProps {
+  isMenuOpen?: boolean;
+}
+
+const ScrollButton = ({ isMenuOpen = false }: ScrollButtonProps) => {
   const [isAtBottom, setIsAtBottom] = useState(false);
 
   useEffect(() => {
@@ -51,6 +55,11 @@ const ScrollButton = () => {
       scrollToBottom();
     }
   };
+
+  // Don't render the button when menu is open
+  if (isMenuOpen) {
+    return null;
+  }
 
   return (
     <button

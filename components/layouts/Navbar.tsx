@@ -3,9 +3,13 @@
 import { navigationItems } from '@/data/NavItem.data';
 import { useState } from 'react'
 
-const Navbar = () => {
+interface NavbarProps {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (value: boolean) => void;
+}
+
+const Navbar = ({ isMenuOpen, setIsMenuOpen }: NavbarProps) => {
   const [activeSection, setActiveSection] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -56,7 +60,7 @@ const Navbar = () => {
 
       {/* Full Screen Menu with Ripple Effect */}
       <div
-        className={`fixed inset-0 bg-gradient-to-br from-[#0a0e27] via-[#0f1942] to-[#1a1f4d] z-40 ${
+        className={`fixed inset-0 bg-gradient-to-br from-[#0a0e27] via-[#0f1942] to-[#1a1f4d] z-40 overflow-y-auto ${
           isMenuOpen
             ? 'opacity-100 scale-100'
             : 'opacity-0 scale-0 pointer-events-none'
@@ -71,7 +75,7 @@ const Navbar = () => {
             : 'opacity 0.2s ease-out, clip-path 0s 0.2s'
         }}
       >
-        <div className="flex flex-col md:flex-row h-full">
+        <div className="flex flex-col md:flex-row min-h-full">
           {/* Left Side - Contact Info */}
           <div className={`w-full md:w-1/3 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-800/50 transition-all duration-500 delay-200 ${
             isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
