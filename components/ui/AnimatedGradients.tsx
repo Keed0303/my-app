@@ -2,7 +2,7 @@
 
 const AnimatedGradients = () => {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-0 dark:opacity-100 transition-opacity duration-300">
       {/* Gradient Circle 1 - Moving across screen */}
       <div className="gradient-blob gradient-blob-1"></div>
 
@@ -163,61 +163,61 @@ const AnimatedGradients = () => {
           }
         }
 
-        /* Color shift animations - purple to blue transitions */
+        /* Color shift animations - Cyan to Purple transitions with improved harmony */
         @keyframes color-shift-1 {
           0%, 100% {
-            background: radial-gradient(circle, #8b5cf6 0%, #7c3aed 30%, transparent 60%);
+            background: radial-gradient(circle, #06b6d4 0%, #0891b2 30%, transparent 60%);
           }
           25% {
-            background: radial-gradient(circle, #6366f1 0%, #4f46e5 30%, transparent 60%);
+            background: radial-gradient(circle, #22d3ee 0%, #06b6d4 30%, transparent 60%);
           }
           50% {
-            background: radial-gradient(circle, #3b82f6 0%, #2563eb 30%, transparent 60%);
+            background: radial-gradient(circle, #8b5cf6 0%, #7c3aed 30%, transparent 60%);
           }
           75% {
-            background: radial-gradient(circle, #a855f7 0%, #9333ea 30%, transparent 60%);
+            background: radial-gradient(circle, #4a90b8 0%, #2d5a7b 30%, transparent 60%);
           }
         }
 
         @keyframes color-shift-2 {
           0%, 100% {
-            background: radial-gradient(circle, #6366f1 0%, #4f46e5 30%, transparent 60%);
-          }
-          25% {
-            background: radial-gradient(circle, #3b82f6 0%, #2563eb 30%, transparent 60%);
-          }
-          50% {
             background: radial-gradient(circle, #8b5cf6 0%, #7c3aed 30%, transparent 60%);
           }
+          25% {
+            background: radial-gradient(circle, #a78bfa 0%, #8b5cf6 30%, transparent 60%);
+          }
+          50% {
+            background: radial-gradient(circle, #22d3ee 0%, #06b6d4 30%, transparent 60%);
+          }
           75% {
-            background: radial-gradient(circle, #0ea5e9 0%, #0284c7 30%, transparent 60%);
+            background: radial-gradient(circle, #64b5f6 0%, #4a90b8 30%, transparent 60%);
           }
         }
 
         @keyframes color-shift-3 {
           0%, 100% {
-            background: radial-gradient(circle, #a855f7 0%, #9333ea 30%, transparent 60%);
+            background: radial-gradient(circle, #4a90b8 0%, #2d5a7b 30%, transparent 60%);
           }
           25% {
-            background: radial-gradient(circle, #8b5cf6 0%, #7c3aed 30%, transparent 60%);
+            background: radial-gradient(circle, #06b6d4 0%, #0891b2 30%, transparent 60%);
           }
           50% {
-            background: radial-gradient(circle, #6366f1 0%, #4f46e5 30%, transparent 60%);
+            background: radial-gradient(circle, #8b5cf6 0%, #7c3aed 30%, transparent 60%);
           }
           75% {
-            background: radial-gradient(circle, #3b82f6 0%, #2563eb 30%, transparent 60%);
+            background: radial-gradient(circle, #22d3ee 0%, #06b6d4 30%, transparent 60%);
           }
         }
 
         @keyframes color-shift-4 {
           0%, 100% {
-            background: radial-gradient(circle, #3b82f6 0%, #2563eb 30%, transparent 60%);
+            background: radial-gradient(circle, #a78bfa 0%, #8b5cf6 30%, transparent 60%);
           }
           25% {
-            background: radial-gradient(circle, #a855f7 0%, #9333ea 30%, transparent 60%);
+            background: radial-gradient(circle, #64b5f6 0%, #4a90b8 30%, transparent 60%);
           }
           50% {
-            background: radial-gradient(circle, #6366f1 0%, #4f46e5 30%, transparent 60%);
+            background: radial-gradient(circle, #06b6d4 0%, #0891b2 30%, transparent 60%);
           }
           75% {
             background: radial-gradient(circle, #8b5cf6 0%, #7c3aed 30%, transparent 60%);
@@ -226,16 +226,16 @@ const AnimatedGradients = () => {
 
         @keyframes color-shift-5 {
           0%, 100% {
-            background: radial-gradient(circle, #0ea5e9 0%, #0284c7 30%, transparent 60%);
+            background: radial-gradient(circle, #22d3ee 0%, #06b6d4 30%, transparent 60%);
           }
           25% {
-            background: radial-gradient(circle, #6366f1 0%, #4f46e5 30%, transparent 60%);
+            background: radial-gradient(circle, #4a90b8 0%, #2d5a7b 30%, transparent 60%);
           }
           50% {
-            background: radial-gradient(circle, #a855f7 0%, #9333ea 30%, transparent 60%);
+            background: radial-gradient(circle, #a78bfa 0%, #8b5cf6 30%, transparent 60%);
           }
           75% {
-            background: radial-gradient(circle, #3b82f6 0%, #2563eb 30%, transparent 60%);
+            background: radial-gradient(circle, #06b6d4 0%, #0891b2 30%, transparent 60%);
           }
         }
 

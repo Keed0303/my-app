@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <ClientWrapper>
-      <div className="relative min-h-screen bg-[#0a0e27] text-white overflow-x-hidden cursor-none">
+      <div className="relative min-h-screen bg-[#0a0e1a] text-white overflow-x-hidden cursor-none transition-colors duration-300">
         {/* Custom Cursor */}
         <CustomCursor />
 
@@ -55,6 +55,7 @@ export default function Home() {
 
         {/* Scroll Button */}
         <ScrollButton isMenuOpen={isMenuOpen} />
+
       </div>
     </ClientWrapper>
   );

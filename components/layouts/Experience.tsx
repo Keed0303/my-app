@@ -4,7 +4,7 @@ const Experience = () => {
   return (
     <>
       {/* Experience Section */}
-      <section className="relative z-10 py-20 bg-[#0a0e27]/50 backdrop-blur-sm">
+      <section id="experience" className="relative z-10 py-20 bg-[#0a0e27]/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             data-aos="fade-up"

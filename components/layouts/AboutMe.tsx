@@ -4,12 +4,12 @@ const AboutMe = () => {
   return (
     <>
      {/* About Me Section */}
-     <section id="about" className="relative z-10 py-20 bg-[#0a0e27]/50 backdrop-blur-sm">
+     <section id="about" className="relative z-10 py-20 bg-slate-100 dark:bg-[#0a0e27]/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             data-aos="fade-up"
             data-aos-duration="800"
-            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-teal-600 dark:from-blue-400 to-purple-600 dark:to-purple-500 bg-clip-text text-transparent"
           >
             About Me
           </h2>
@@ -24,7 +24,7 @@ const AboutMe = () => {
             >
               <div className="relative">
                 {/* Image container */}
-                <div className="relative bg-[#0a0e27]/30 rounded-xl p-1 border border-blue-500/20">
+                <div className="relative bg-white dark:bg-[#0a0e27]/30 rounded-xl p-1 border border-slate-200 dark:border-blue-500/20 shadow-lg dark:shadow-none">
                   <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
                     <Image
                       src="/gradpic.jpg"
@@ -38,13 +38,13 @@ const AboutMe = () => {
 
                 {/* Stats cards below image */}
                 <div className="grid grid-cols-2 gap-3 mt-4">
-                  <div className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-blue-300">3+</div>
-                    <div className="text-xs text-gray-400 mt-1">Years Experience</div>
+                  <div className="bg-white dark:bg-[#0a0e27]/30 border border-slate-200 dark:border-blue-500/20 rounded-lg p-4 text-center shadow-md dark:shadow-none">
+                    <div className="text-2xl font-bold text-teal-600 dark:text-blue-300">3+</div>
+                    <div className="text-xs text-slate-600 dark:text-gray-400 mt-1">Years Experience</div>
                   </div>
-                  <div className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-blue-300">10+</div>
-                    <div className="text-xs text-gray-400 mt-1">Technologies</div>
+                  <div className="bg-white dark:bg-[#0a0e27]/30 border border-slate-200 dark:border-blue-500/20 rounded-lg p-4 text-center shadow-md dark:shadow-none">
+                    <div className="text-2xl font-bold text-teal-600 dark:text-blue-300">10+</div>
+                    <div className="text-xs text-slate-600 dark:text-gray-400 mt-1">Technologies</div>
                   </div>
                 </div>
               </div>
@@ -57,24 +57,24 @@ const AboutMe = () => {
                 data-aos="fade-left"
                 data-aos-delay="100"
                 data-aos-duration="800"
-                className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-xl p-6"
+                className="bg-white dark:bg-[#0a0e27]/30 border border-slate-200 dark:border-blue-500/20 rounded-xl p-6 shadow-lg dark:shadow-none"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center border border-blue-500/30">
-                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 bg-teal-100 dark:bg-blue-500/20 rounded-lg flex items-center justify-center border border-teal-200 dark:border-blue-500/30">
+                    <svg className="w-6 h-6 text-teal-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-blue-300">
+                  <h3 className="text-2xl font-bold text-teal-700 dark:text-blue-300">
                     Professional Summary
                   </h3>
                 </div>
 
                 <div className="space-y-4">
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-slate-700 dark:text-gray-300 leading-relaxed">
                     Self-motivated problem solver with one year of experience in software development and architecture. Adept at self-learning, with a strong foundation in communication, collaboration, and creating detailed technical documentation.
                   </p>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-slate-700 dark:text-gray-300 leading-relaxed">
                     My journey in software development has equipped me with the skills to tackle complex challenges and deliver high-quality products that exceed expectations.
                   </p>
                 </div>
@@ -85,15 +85,15 @@ const AboutMe = () => {
                 data-aos="fade-left"
                 data-aos-delay="200"
                 data-aos-duration="800"
-                className="bg-[#0a0e27]/30 border border-blue-500/20 rounded-xl p-6"
+                className="bg-white dark:bg-[#0a0e27]/30 border border-slate-200 dark:border-blue-500/20 rounded-xl p-6 shadow-lg dark:shadow-none"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center border border-blue-500/30">
-                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 bg-teal-100 dark:bg-blue-500/20 rounded-lg flex items-center justify-center border border-teal-200 dark:border-blue-500/30">
+                    <svg className="w-6 h-6 text-teal-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-blue-300">
+                  <h3 className="text-2xl font-bold text-teal-700 dark:text-blue-300">
                     Skills & Expertise
                   </h3>
                 </div>

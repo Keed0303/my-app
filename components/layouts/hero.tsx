@@ -109,33 +109,33 @@ const Hero = () => {
   return (
     <>
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+      <section id="home" className="relative min-h-screen flex items-center justify-center pt-32 sm:pt-36 pb-16 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           {/* Transparent Card Container */}
-          <div className="relative bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-md border border-blue-500/30 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl">
+          <div className="relative bg-gradient-to-br from-cyan-500/10 to-purple-500/10 backdrop-blur-md border border-cyan-400/30 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl shadow-cyan-500/10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left Side - Text Content */}
             <div className="text-center lg:text-left space-y-8" data-aos="fade-right">
               {/* Badge/Tag */}
               <div className="inline-block">
-                <span className="px-4 py-2 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium border border-orange-500/30">
-                  Available for Freelance
+                <span className="px-4 py-2 bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-full text-sm font-medium border border-orange-500/30">
+                  Open for Projects
                 </span>
               </div>
 
               {/* Main Heading */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  I'm Manuel Kyd Thomas O. Nagpala
+                <span className="bg-gradient-to-r from-teal-600 dark:from-cyan-400 via-purple-600 dark:via-purple-500 to-pink-600 dark:to-pink-400 bg-clip-text text-transparent">
+                  Hey, I'm Kyd—I Build Apps People Actually Use
                 </span>
               </h1>
 
               {/* Description */}
-              <p className="text-xl sm:text-2xl text-blue-300 font-light">
-                Web and App Developer
+              <p className="text-xl sm:text-2xl text-teal-600 dark:text-cyan-300 font-light">
+                Developer who obsesses over performance & user experience
               </p>
-              <p className="text-gray-300 text-lg max-w-xl mx-auto lg:mx-0">
-                Crafting innovative digital experiences with modern technologies and creative solutions.
+              <p className="text-slate-700 dark:text-gray-300 text-lg max-w-xl mx-auto lg:mx-0">
+                From concept to deployment, I craft web and mobile experiences that are fast, beautiful, and built to scale. Let's make something great.
               </p>
 
               {/* CTA Buttons */}
@@ -154,10 +154,10 @@ const Hero = () => {
                 </a>
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="group px-8 py-4 border-2 border-gray-600 rounded-lg font-semibold hover:bg-white/5 hover:border-gray-500 transition-all duration-300 text-center"
+                  className="group px-8 py-4 border-2 border-slate-300 dark:border-gray-600 rounded-lg font-semibold text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-white/5 hover:border-slate-400 dark:hover:border-gray-500 transition-all duration-300 text-center"
                 >
                   <span className="flex items-center justify-center gap-2">
-                    Email Me
+                    Contact Me
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -170,7 +170,7 @@ const Hero = () => {
             <div className="relative flex items-center justify-center" data-aos="fade-left">
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
                 {/* Hero Image */}
-                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-blue-500/30 shadow-2xl shadow-blue-500/50 z-20">
+                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-teal-300 dark:border-cyan-400/30 shadow-2xl shadow-teal-300/50 dark:shadow-cyan-400/40 z-20">
                   <Image
                     src="/hero-image.png"
                     alt="Manuel Kyd Thomas O. Nagpala"
@@ -258,19 +258,19 @@ const Hero = () => {
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/4 left-10 w-2 h-2 bg-teal-400 dark:bg-cyan-400 rounded-full animate-pulse"></div>
         <div className="absolute top-1/3 right-20 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-100"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-2 h-2 bg-orange-400 rounded-full animate-pulse delay-200"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-2 h-2 bg-teal-300 dark:bg-cyan-300 rounded-full animate-pulse delay-200"></div>
       </section>
 
       {/* Email Contact Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}>
-          <div className="relative w-full max-w-md bg-gradient-to-br from-[#0a0e27] to-[#1a1f4d] rounded-2xl p-8 shadow-2xl border border-blue-500/20" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full max-w-md bg-gradient-to-br from-white to-slate-100 dark:from-[#0a0e1a] dark:to-[#1a3a52] rounded-2xl p-8 shadow-2xl border border-slate-200 dark:border-cyan-400/20" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -278,46 +278,46 @@ const Hero = () => {
             </button>
 
             {/* Modal Header */}
-            <h2 className="text-2xl font-bold text-white mb-2">Get in Touch</h2>
-            <p className="text-gray-400 mb-6">Send me a message and I'll get back to you soon!</p>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Get in Touch</h2>
+            <p className="text-slate-600 dark:text-gray-400 mb-6">Send me a message and I'll get back to you soon!</p>
 
             {/* Contact Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Name</label>
                 <input
                   type="text"
                   id="name"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-3 bg-white dark:bg-white/5 border border-slate-300 dark:border-gray-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-teal-500 dark:focus:border-cyan-400 transition-colors"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-3 bg-white dark:bg-white/5 border border-slate-300 dark:border-gray-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-teal-500 dark:focus:border-cyan-400 transition-colors"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Message</label>
                 <textarea
                   id="message"
                   required
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-white dark:bg-white/5 border border-slate-300 dark:border-gray-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-teal-500 dark:focus:border-cyan-400 transition-colors resize-none"
                   placeholder="Your message..."
                 />
               </div>
