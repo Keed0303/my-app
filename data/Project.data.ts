@@ -7,15 +7,15 @@ export const projectData: Project[] = [
     tech: ['React Native', 'Firebase', 'Expo'],
     category: 'Mobile App',
     image: '/My pets journey/Home.svg',
-    accessibility: true
+    accessibility: false
   },
-  // {
-  //   title: 'E-Commerce Platform',
-  //   description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
-  //   tech: ['React', 'Node.js', 'MongoDB'],
-  //   category: 'Website',
-  //   accessibility: true
-  // },
+  {
+    title: 'Memberly',
+    description: 'Memberly is a multi-tenant membership and loyalty points management system for fitness gyms and similar businesses. The system handles member management, subscription billing, RFID-based access control, and comprehensive analytics',
+    tech: ['React', 'Laravel', 'TypeScript'],
+    category: 'Website',
+    accessibility: false
+  },
   // {
   //   title: 'Task Management App',
   //   description: 'Collaborative task management tool with real-time updates and team features.',
