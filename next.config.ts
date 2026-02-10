@@ -34,7 +34,7 @@ const nextConfig: NextConfig = {
 
   // Experimental optimizations
   experimental: {
-    optimizePackageImports: ['aos', 'react', 'react-dom'],
+    optimizePackageImports: ['aos', 'react', 'react-dom', 'three'],
   },
 
   // Turbopack configuration (Next.js 16 default)
