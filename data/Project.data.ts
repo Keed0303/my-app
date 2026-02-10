@@ -16,13 +16,13 @@ export const projectData: Project[] = [
     category: 'Website',
     accessibility: false
   },
-  // {
-  //   title: 'Task Management App',
-  //   description: 'Collaborative task management tool with real-time updates and team features.',
-  //   tech: ['Next.js', 'TypeScript', 'Firebase'],
-  //   category: 'Website',
-  //   accessibility: true
-  // },
+  {
+    title: 'Nivs Gym Management System',
+    description: 'Collaborative task management tool with real-time updates and team features.',
+    tech: ['Next.js', 'TypeScript', 'Firebase'],
+    category: 'Website',
+    accessibility: false
+  },
   // {
   //   title: 'Portfolio Website',
   //   description: 'Modern portfolio website with animations and responsive design.',

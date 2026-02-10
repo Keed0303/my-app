@@ -67,11 +67,11 @@ const ScrollButton = ({ isMenuOpen = false }: ScrollButtonProps) => {
       className="fixed bottom-8 right-8 z-50 group"
       aria-label={isAtBottom ? 'Scroll to top' : 'Scroll to bottom'}
     >
-      <div className="flex flex-col items-center gap-3 bg-gradient-to-b from-blue-500/20 to-purple-600/20 backdrop-blur-md border border-blue-400/30 px-3 py-4 rounded-full shadow-lg hover:shadow-blue-500/50 hover:border-blue-400/60 transition-all duration-300 hover:scale-105">
+      <div className="flex flex-col items-center gap-3 bg-gradient-to-b from-blue-500/20 to-purple-600/20 backdrop-blur-md border border-blue-400/30 dark:border-blue-400/30 px-3 py-4 rounded-full shadow-lg hover:shadow-blue-500/50 hover:border-blue-400/60 transition-all duration-300 hover:scale-105">
         {/* Stacked Arrow Icons */}
         <div className="flex flex-col gap-0">
           <svg
-            className={`w-5 h-5 text-blue-300 transition-all duration-500 ${
+            className={`w-5 h-5 text-blue-600 dark:text-blue-300 transition-all duration-500 ${
               isAtBottom ? 'rotate-180' : ''
             }`}
             fill="currentColor"
@@ -81,7 +81,7 @@ const ScrollButton = ({ isMenuOpen = false }: ScrollButtonProps) => {
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
           </svg>
           <svg
-            className={`w-5 h-5 text-blue-400 -mt-2 transition-all duration-500 ${
+            className={`w-5 h-5 text-blue-500 dark:text-blue-400 -mt-2 transition-all duration-500 ${
               isAtBottom ? 'rotate-180' : ''
             }`}
             fill="currentColor"
@@ -91,7 +91,7 @@ const ScrollButton = ({ isMenuOpen = false }: ScrollButtonProps) => {
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
           </svg>
           <svg
-            className={`w-5 h-5 text-blue-500 -mt-2 transition-all duration-500 ${
+            className={`w-5 h-5 text-blue-400 dark:text-blue-500 -mt-2 transition-all duration-500 ${
               isAtBottom ? 'rotate-180' : ''
             }`}
             fill="currentColor"
@@ -107,7 +107,7 @@ const ScrollButton = ({ isMenuOpen = false }: ScrollButtonProps) => {
           {(isAtBottom ? 'SCROLL TO TOP' : 'SCROLL TO BOTTOM').split('').map((char, index) => (
             <span
               key={index}
-              className="text-blue-300 text-[10px] font-semibold tracking-wider leading-tight"
+              className="text-blue-600 dark:text-blue-300 text-[10px] font-semibold tracking-wider leading-tight transition-colors duration-300"
               style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
             >
               {char === ' ' ? '\u00A0' : char}

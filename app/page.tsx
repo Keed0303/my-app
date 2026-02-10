@@ -7,8 +7,7 @@ import Navbar from "@/components/layouts//Navbar";
 import ClientWrapper from "@/components/ui/ClientWrapper";
 
 // Dynamic imports for below-fold content - loads only when needed
-const ParticleBackground = dynamic(() => import('@/components/ui/ParticleBackground'));
-const AnimatedGradients = dynamic(() => import('@/components/ui/AnimatedGradients'));
+const GeometricBackground = dynamic(() => import('@/components/ui/GeometricBackground'));
 const CustomCursor = dynamic(() => import('@/components/ui/CustomCursor'));
 const AboutMe = dynamic(() => import('@/components/layouts//AboutMe'));
 const Project = dynamic(() => import('@/components/layouts/Project'));
@@ -22,15 +21,12 @@ export default function Home() {
 
   return (
     <ClientWrapper>
-      <div className="relative min-h-screen bg-[#0a0e1a] text-white overflow-x-hidden cursor-none transition-colors duration-300">
+      <div className="relative min-h-screen text-slate-900 dark:text-white overflow-x-hidden cursor-none transition-colors duration-300">
         {/* Custom Cursor */}
         <CustomCursor />
 
-        {/* Animated Gradient Backgrounds */}
-        <AnimatedGradients />
-
-        {/* Particle Background */}
-        <ParticleBackground />
+        {/* Geometric Line Background */}
+        <GeometricBackground />
 
         {/* Hero Section */}
         <Hero />

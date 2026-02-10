@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Hide the Next.js dev indicator
+  devIndicators: false,
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],

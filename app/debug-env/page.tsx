@@ -29,7 +29,7 @@ export default function DebugEnv() {
 
       <div className="mt-8 p-4 bg-yellow-900/20 border border-yellow-500 rounded">
         <p className="text-yellow-400">
-          ⚠️ If any variable shows "NOT SET", your environment variables are not properly configured in Vercel.
+          ⚠️ If any variable shows &quot;NOT SET&quot;, your environment variables are not properly configured in Vercel.
         </p>
       </div>
     </div>

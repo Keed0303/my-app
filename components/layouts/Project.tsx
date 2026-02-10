@@ -18,13 +18,13 @@ const Project = () => {
   return (
     <>
      {/* Projects Section */}
-      <section id="project" className="relative z-10 py-20 bg-white dark:bg-transparent">
+      <section id="project" className="relative z-10 py-16 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Portfolio Title */}
           <h1
             data-aos="fade-up"
             data-aos-duration="800"
-            className="text-5xl md:text-6xl font-bold text-center mb-12 tracking-wider text-slate-900 dark:text-white"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 tracking-wider text-slate-900 dark:text-white transition-colors duration-300"
           >
             PORTFOLIO
           </h1>
@@ -33,16 +33,16 @@ const Project = () => {
           <div
             data-aos="fade-up"
             data-aos-delay="100"
-            className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16"
+            className="flex flex-wrap justify-center gap-3 md:gap-6 mb-12"
           >
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`text-base md:text-lg font-medium transition-all duration-300 pb-2 ${
+                className={`text-sm md:text-base font-medium transition-all duration-300 pb-2 ${
                   activeCategory === category
-                    ? 'text-teal-600 dark:text-cyan-400 border-b-2 border-teal-600 dark:border-cyan-400'
-                    : 'text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white'
+                    ? 'text-slate-900 dark:text-white border-b-2 border-slate-900 dark:border-white'
+                    : 'text-slate-400 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white'
                 }`}
               >
                 {category}

@@ -1,3 +1,10 @@
+// Pre-computed deterministic star positions (avoids Math.random() during render)
+const STAR_POSITIONS = Array.from({ length: 20 }, (_, i) => ({
+  left: `${((i * 37 + 13) % 97) + 1}%`,
+  top: `${((i * 53 + 7) % 97) + 1}%`,
+  animationDelay: `${((i * 7) % 20) / 10}s`,
+}));
+
 const GalaxyLoader = () => {
   return (
     <div className="galaxy-loader">
@@ -18,15 +25,11 @@ const GalaxyLoader = () => {
 
         {/* Stars background */}
         <div className="stars-container">
-          {[...Array(20)].map((_, i) => (
+          {STAR_POSITIONS.map((pos, i) => (
             <div
               key={i}
               className="star"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-              }}
+              style={pos}
             ></div>
           ))}
         </div>

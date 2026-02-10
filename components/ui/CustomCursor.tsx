@@ -19,7 +19,7 @@ const CustomCursor = () => {
       return isTouchDevice || isMobileUserAgent || isSmallScreen;
     };
 
-    // Initial check
+    // Initial check — must set state after mount to detect client environment
     const isMobile = checkIfMobile();
     setShouldRender(!isMobile);
 
@@ -113,6 +113,7 @@ const CustomCursor = () => {
       clearTimeout(timer);
       window.removeEventListener('resize', handleResize);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Don't render on mobile/touch devices

@@ -4,7 +4,7 @@ import { useEffect, type ReactNode } from 'react';
 import 'aos/dist/aos.css';
 
 // Lazy load AOS only when needed
-let AOS: any = null;
+let AOS: { init: (options: object) => void; refresh: () => void } | null = null;
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
   useEffect(() => {
