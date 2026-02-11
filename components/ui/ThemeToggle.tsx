@@ -25,6 +25,19 @@ const ThemeToggle = ({ className = '' }: ThemeToggleProps) => {
         htmlElement.classList.add('dark');
       }
     }
+
+    // Sync state when theme is changed externally (e.g. Gojo easter egg)
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'class') {
+          const dark = htmlElement.classList.contains('dark');
+          setIsDark(dark);
+        }
+      }
+    });
+    observer.observe(htmlElement, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
   }, []);
 
   // Return a fixed-size placeholder before mount to prevent layout shift
