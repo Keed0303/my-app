@@ -1,8 +1,8 @@
 'use client';
 
 import { projectData } from '@/data/Project.data';
-import { useState, useEffect } from 'react'
-import AOS from 'aos';
+import { useState } from 'react';
+import Image from 'next/image';
 
 const Project = () => {
   const [activeCategory, setActiveCategory] = useState<'Mobile App' | 'Website' | 'Desktop' | 'Other Projects'>('Mobile App');
@@ -10,108 +10,100 @@ const Project = () => {
 
   const filteredProjects = projectData.filter(project => project.category === activeCategory);
 
-  // Refresh AOS when category changes
-  useEffect(() => {
-    AOS.refresh();
-  }, [activeCategory]);
-
   return (
-    <>
-     {/* Projects Section */}
-      <section id="project" className="relative z-10 py-16 bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Portfolio Title */}
-          <h1
-            data-aos="fade-up"
-            data-aos-duration="800"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 tracking-wider text-slate-900 dark:text-white transition-colors duration-300"
-          >
-            PORTFOLIO
-          </h1>
+    <section id="project" className="py-24 border-t border-border-primary">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold text-text-primary mb-8">Projects</h2>
 
-          {/* Category Navigation */}
-          <div
-            data-aos="fade-up"
-            data-aos-delay="100"
-            className="flex flex-wrap justify-center gap-3 md:gap-6 mb-12"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`text-sm md:text-base font-medium transition-all duration-300 pb-2 ${
-                  activeCategory === category
-                    ? 'text-slate-900 dark:text-white border-b-2 border-slate-900 dark:border-white'
-                    : 'text-slate-400 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white'
-                }`}
+        {/* Category filter */}
+        <div className="flex gap-6 mb-12 border-b border-border-primary">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`pb-3 text-sm font-medium transition-colors duration-150 ${
+                activeCategory === category
+                  ? 'text-accent border-b-2 border-accent'
+                  : 'text-text-muted hover:text-text-primary'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Project grid */}
+        {filteredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {filteredProjects.map((project, index) => (
+              <div
+                key={`${activeCategory}-${index}`}
+                className="border border-border-primary p-8 space-y-4"
               >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Projects Grid */}
-          {filteredProjects.length > 0 ? (
-            <div key={activeCategory} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <div
-                  key={`${activeCategory}-${index}`}
-                  className="bg-gradient-to-br from-teal-50 dark:from-blue-500/10 to-purple-50 dark:to-purple-500/10 border border-teal-200 dark:border-blue-500/30 rounded-xl p-6 hover:border-teal-400 dark:hover:border-blue-400 hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-blue-500/20 transition-all duration-300 group h-full"
-                >
-                  <div className="h-40 bg-gradient-to-br from-teal-500 dark:from-blue-600 to-purple-500 dark:to-purple-600 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
-                    {project.image ? (
-                      <svg className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-                        <defs>
-                          <pattern id={`project-image-${index}`} x="0" y="0" width="1" height="1" patternContentUnits="objectBoundingBox">
-                            <image
-                              href={project.image}
-                              x="0"
-                              y="0"
-                              width="1"
-                              height="1"
-                              preserveAspectRatio="xMidYMid slice"
-                            />
-                          </pattern>
-                        </defs>
-                        <rect x="0" y="0" width="100%" height="100%" fill={`url(#project-image-${index})`} />
-                      </svg>
-                    ) : (
-                      <span className="text-4xl">📱</span>
-                    )}
+                {/* Image */}
+                {project.image && (
+                  <div className="relative w-full h-48 overflow-hidden border border-border-primary">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-teal-700 dark:text-blue-300 group-hover:text-teal-600 dark:group-hover:text-blue-200">{project.title}</h3>
-                  <p className="text-slate-600 dark:text-gray-400 mb-4 line-clamp-3">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="text-xs bg-teal-100 dark:bg-blue-500/20 text-teal-700 dark:text-blue-300 px-2 py-1 rounded">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                )}
 
-                  {project.accessibility === true && (
-                    <div className="flex gap-3">
-                      <button className="text-sm text-teal-600 dark:text-blue-400 hover:text-teal-700 dark:hover:text-blue-300 transition-colors">
-                        View Demo →
-                      </button>
+                {/* Result */}
+                <p className="font-mono text-xs uppercase tracking-wider text-accent">
+                  {project.result}
+                </p>
 
-                      <a href=''  className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors">
-                        GitHub →
-                      </a>
-                    </div>
+                {/* Title */}
+                <h3 className="text-xl font-bold text-text-primary">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-xs px-2 py-1 border border-border-primary text-text-muted"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Links */}
+                <div className="flex gap-4 pt-2">
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} className="text-sm text-accent hover:underline transition-colors duration-150">
+                      Live Demo
+                    </a>
+                  )}
+                  {project.sourceUrl && (
+                    <a href={project.sourceUrl} className="text-sm text-accent hover:underline transition-colors duration-150">
+                      Source
+                    </a>
                   )}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center text-slate-500 dark:text-gray-400 py-20">
-              No projects in this category yet.
-            </div>
-          )}
-        </div>
-      </section>
-    </>
-  )
-}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center text-text-muted py-20">
+            No projects in this category yet.
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
 
-export default Project
+export default Project;
