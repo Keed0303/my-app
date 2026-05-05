@@ -2,46 +2,27 @@ import { Project } from "@/types/Project";
 
 export const projectData: Project[] = [
   {
-    title: 'My Pet\'s Journey Application',
-    description: 'A comprehensive mobile loyalty application designed for pet care services, developed for Blink Creative Studio. Features reward tracking, appointment scheduling, and personalized pet profiles. Built with real-time database synchronization and push notifications to keep pet owners engaged and connected with their favorite veterinary clinics and pet services.',
+    title: "My Pet's Journey Application",
+    description: 'A comprehensive mobile loyalty application for pet care services. Features reward tracking, appointment scheduling, and personalized pet profiles with real-time database sync and push notifications.',
+    result: 'Shipped to production for Blink Creative Studio',
     tech: ['React Native', 'Firebase', 'Expo'],
     category: 'Mobile App',
-    image: '/My pets journey/Home.svg',
-    accessibility: false
+    image: '/My%20pets%20journey/Home.svg',
   },
   {
     title: 'Memberly',
-    description: 'Memberly is a multi-tenant membership and loyalty points management system for fitness gyms and similar businesses. The system handles member management, subscription billing, RFID-based access control, and comprehensive analytics',
+    description: 'Multi-tenant membership and loyalty points management system for fitness gyms. Handles member management, subscription billing, RFID-based access control, and comprehensive analytics.',
+    result: 'Full-stack SaaS platform with multi-tenancy',
     tech: ['React', 'Laravel', 'TypeScript'],
     category: 'Website',
-    accessibility: false
+    image: '/memberly/Screenshot%202026-05-06%20065147.png',
   },
   {
     title: 'Nivs Gym Management System',
-    description: 'Collaborative task management tool with real-time updates and team features.',
+    description: 'Gym management platform with real-time updates, member tracking, and billing integration.',
+    result: 'Deployed for active gym operations',
     tech: ['Next.js', 'TypeScript', 'Firebase'],
     category: 'Website',
-    accessibility: false
+    image: "/Niv's%20gym/Screenshot%202026-05-06%20065009.png",
   },
-  // {
-  //   title: 'Portfolio Website',
-  //   description: 'Modern portfolio website with animations and responsive design.',
-  //   tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-  //   category: 'Website',
-  //   accessibility: true
-  // },
-  // {
-  //   title: 'Desktop Media Player',
-  //   description: 'A powerful desktop application for playing and organizing media files with advanced features.',
-  //   tech: ['Electron', 'React', 'Node.js'],
-  //   category: 'Desktop',
-  //   accessibility: true
-  // },
-  // {
-  //   title: 'Social Media Dashboard',
-  //   description: 'Analytics dashboard for tracking social media metrics and engagement.',
-  //   tech: ['React', 'Chart.js', 'API Integration'],
-  //   category: 'Other Projects',
-  //   accessibility: true
-  // },
 ];
