@@ -9,6 +9,7 @@ const LiveWorkCounter = dynamic(() => import('@/components/layouts/LiveWorkCount
 const Project = dynamic(() => import('@/components/layouts/Project'));
 const Experience = dynamic(() => import('@/components/layouts/Experience'));
 const AboutMe = dynamic(() => import('@/components/layouts/AboutMe'));
+const Skills = dynamic(() => import('@/components/layouts/Skills'));
 const Contact = dynamic(() => import('@/components/layouts/Contact'));
 const Footer = dynamic(() => import('@/components/layouts/Footer'));
 
@@ -23,6 +24,7 @@ export default function Home() {
       <Project />
       <Experience />
       <AboutMe />
+      <Skills />
       <Contact />
       <Footer />
     </main>
