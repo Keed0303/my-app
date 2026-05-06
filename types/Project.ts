@@ -7,4 +7,5 @@ export type Project = {
   image?: string;
   liveUrl?: string;
   sourceUrl?: string;
+  status?: { type: 'completed' | 'in-progress' | 'coming-soon'; progress?: number };
 };
