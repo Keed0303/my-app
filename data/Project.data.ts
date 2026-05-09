@@ -8,6 +8,7 @@ export const projectData: Project[] = [
     tech: ['React Native', 'Firebase', 'Expo'],
     category: 'Mobile App',
     image: '/My%20pets%20journey/Home.svg',
+    status: { type: 'completed', progress: 100 },
   },
   {
     title: 'Memberly',
@@ -16,6 +17,7 @@ export const projectData: Project[] = [
     tech: ['React', 'Laravel', 'TypeScript'],
     category: 'Website',
     image: '/memberly/Screenshot%202026-05-06%20065147.png',
+    status: { type: 'coming-soon' },
   },
   {
     title: 'Nivs Gym Management System',
@@ -24,5 +26,6 @@ export const projectData: Project[] = [
     tech: ['Next.js', 'TypeScript', 'Firebase'],
     category: 'Website',
     image: "/Niv's%20gym/Screenshot%202026-05-06%20065009.png",
+    status: { type: 'in-progress', progress: 90 },
   },
 ];

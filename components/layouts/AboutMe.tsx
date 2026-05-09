@@ -1,12 +1,15 @@
 import Image from 'next/image';
 
 const AboutMe = () => {
+<<<<<<< HEAD
   const techGroups = [
     { label: 'Primary', items: ['React', 'TypeScript', 'Next.js', 'Laravel', 'PHP'] },
     { label: 'Mobile', items: ['React Native', 'Expo', 'Ionic'] },
     { label: 'Other', items: ['Angular', 'Firebase', 'SQL', 'Node.js', 'Tailwind CSS', 'Git'] },
   ];
 
+=======
+>>>>>>> aaa29e0a73c6e87246ccd9c52b454728fe1f7f7d
   return (
     <section id="about" className="py-24 border-t border-border-primary">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,6 +26,7 @@ const AboutMe = () => {
             />
           </div>
 
+<<<<<<< HEAD
           {/* Bio + Tech */}
           <div className="space-y-6">
             <div className="space-y-4">
@@ -44,6 +48,16 @@ const AboutMe = () => {
                 </div>
               ))}
             </div>
+=======
+          {/* Bio */}
+          <div className="space-y-4">
+            <p className="text-text-secondary leading-relaxed">
+              Self-motivated problem solver with experience in software development and architecture. Adept at self-learning, with a strong foundation in communication, collaboration, and creating detailed technical documentation.
+            </p>
+            <p className="text-text-secondary leading-relaxed">
+              My journey in software development has equipped me with the skills to tackle complex challenges and deliver high-quality products that exceed expectations.
+            </p>
+>>>>>>> aaa29e0a73c6e87246ccd9c52b454728fe1f7f7d
           </div>
         </div>
       </div>

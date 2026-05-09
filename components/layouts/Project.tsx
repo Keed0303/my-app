@@ -80,6 +80,25 @@ const Project = () => {
                   ))}
                 </div>
 
+                {/* Status bar */}
+                {project.status && (
+                  <div className="pt-4 border-t border-border-primary space-y-2">
+                    <p className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                      {project.status.type === 'completed' && 'Completed'}
+                      {project.status.type === 'in-progress' && 'In Progress'}
+                      {project.status.type === 'coming-soon' && 'Coming Soon'}
+                    </p>
+                    {project.status.progress !== undefined && (
+                      <div className="w-full h-1 bg-border-primary overflow-hidden">
+                        <div
+                          className="h-full bg-accent transition-all duration-300"
+                          style={{ width: `${project.status.progress}%` }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {/* Links */}
                 <div className="flex gap-4 pt-2">
                   {project.liveUrl && (
