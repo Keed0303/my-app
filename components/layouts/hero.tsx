@@ -14,11 +14,11 @@ const Hero = () => {
             </p>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-text-primary">
-              I build web and mobile products that ship fast and scale.
+              Full-stack developer building web and mobile applications.
             </h1>
 
             <p className="text-base text-text-secondary leading-relaxed max-w-xl">
-              From concept to deployment — performance-obsessed, user-focused engineering for startups and businesses that need to move quickly.
+              3 years of professional experience with React, TypeScript, Laravel, and React Native. Currently focused on building membership platforms and business tools.
             </p>
 
             <div className="flex gap-4 pt-2">
@@ -28,6 +28,14 @@ const Hero = () => {
                 className="px-6 py-3 bg-accent text-white font-medium text-sm transition-colors duration-150 hover:opacity-90"
               >
                 Download CV
+              </a>
+              <a
+                href="https://github.com/Keed0303"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border border-border-primary text-text-primary font-medium text-sm transition-colors duration-150 hover:border-accent hover:text-accent"
+              >
+                GitHub
               </a>
               <a
                 href="#contact"
